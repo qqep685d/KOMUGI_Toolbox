@@ -30,8 +30,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'bootstrap4',
-    'Accounts.apps.AccountsConfig'
-    # 'FinDocs.apps.FinDocsConfig',
+    'Accounts.apps.AccountsConfig',
+    'FinDocs.apps.FindocsConfig',
 ]
 
 MIDDLEWARE = [
@@ -104,7 +104,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles', 'static_root')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
@@ -113,5 +113,10 @@ STATICFILES_DIRS = [
 
 AUTH_USER_MODEL = 'Accounts.User'
 
-LOGIN_URL = 'Accounts:login'
-LOGIN_REDIRECT_URL = 'Accounts:top'
+LOGIN_URL = 'accounts:login'
+LOGIN_REDIRECT_URL = 'accounts:top'
+
+try:
+    from local import *
+except ImportError:
+    pass

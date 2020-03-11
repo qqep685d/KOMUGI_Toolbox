@@ -1,0 +1,36 @@
+    <form method="POST" id="save">
+      {% csrf_token %}
+      <table class="table table-bordered">
+        <thead class="thead-dark">
+          <tr><th scope="col">項目</th><th>入力フォーム</th><th>補足</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="col">ID</th><td>{{ rec.id }}</td><td></td></tr>
+          <tr><th scope="col">タイトル</th><td>{{ form.title }}</td><td><span class="small text-danger">必須</span><br><span class="small text-muted">キーワード検索対象</span></td></tr>
+          <tr><th scope="col">種類</th><td>{{ form.type }}</td><td><span class="small text-muted">未選択の場合、検索できない</span></td></tr>
+          <tr><th scope="col">内容</th><td>{{ form.content }}</td><td><span class="small text-muted">キーワード検索対象</span></td></tr>
+          <tr><th scope="col">作成年月日</th><td>{{ form.date }}</td><td><span class="small text-muted">資料の作成年月日</span></td></tr>
+          <tr><th scope="col">問合せ先</th><td>{{ form.contact_to }}</td><td></td></tr>
+          <tr><th scope="col">資料URL</th><td>{{ form.url }}</td><td><span class="small text-muted">Web資料のURL</span></td></tr>
+          <tr><th scope="col">表紙URL</th><td>{{ form.image }}</td><td><span class="small text-muted">プレビュー画像のURL</span></td></tr>
+          <tr><th scope="col">原本所在</th><td>{{ form.original }}</td><td></td></tr>
+          <tr>
+            <th scope="col">資料コード</th>
+            <td>
+              {% if rec.barcode %}
+              <a href="" data-toggle="modal" data-target="#barcode-modal" data-barcode="{{ rec.barcode }}">
+              {% endif %}
+              {{ rec.barcode }}
+              {% if rec.barcode %}
+              </a>
+              {% endif %}
+            </td>
+            <td><span class="small text-muted">変更不可<br>キーワード検索対象</span></td></tr>
+          <tr><th scope="col">バックアップファイル</th><td>{{ form.backup }}</td><td><span class="small text-muted">バックアップファイルの所在（フォルダ名やファイル名）</span></td></tr>
+          <tr><th scope="col">公開状態</th><td>{{ form.is_public }}</td><td></td></tr>
+          <tr><th scope="col">キーワード</th><td>{{ form.keywords }}</td><td><span class="small text-muted">ワード間の区切りにはスペースを使用<br>（例）wheat Triticum<br>キーワード検索対象</span></td></tr>
+        </tbody>
+      </table>
+    </form>
+
+    {% include "FinDocs/parts/modal_barcode.html" %}
