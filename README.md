@@ -6,8 +6,6 @@
 
 
 ## 参考
-- [開発用と本番用にDjangoの設定ファイルを分割する](https://medium.com/@kjmczk/django-multiple-settings-2a4c15c7c7b0)
-  - データベースについても各ファイルに記載: 「Herokuへのアップロード」を参考にした。
 - [Herokuへのアップロード](https://tutorial-extensions.djangogirls.org/ja/heroku/)
   - migrate前までを参照した
   - 設定ファイルについては、上で設定した通りにした
