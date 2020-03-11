@@ -30,7 +30,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'bootstrap4',
-    # 'Accounts.apps.AccountsConfig'
+    'Accounts.apps.AccountsConfig'
     # 'FinDocs.apps.FinDocsConfig',
 ]
 
@@ -110,3 +110,8 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
+
+AUTH_USER_MODEL = 'Accounts.User'
+
+LOGIN_URL = 'Accounts:login'
+LOGIN_REDIRECT_URL = 'Accounts:top'
