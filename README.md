@@ -6,10 +6,8 @@
 
 ## 経過メモ
 1. プロジェクト立ち上げから設定ファイル作成
-  - 基本的には「[『完全版』Djangoアプリをherokuにデプロイ！](http://digital-tree.xyz/blogs/1169)」に従った
-  - データベースの設定は「[Django Girls Tutorial](https://tutorial-extensions.djangogirls.org/ja/heroku/)」に従った
-  - HerokuへのSECRET_KEYの登録方法は[こちら](https://medium.com/@kjmczk/heroku-deploy-django-d2eab0a5e0ce)を参考にした
-  - ここまでで、Herokuにエラーなしでデプロイされたことを確認した
+  - 参照: [DjangoアプリをHerokuにデプロイする方法](https://qiita.com/frosty/items/66f5dff8fc723387108c)
+  - 
 2. ユーザー機能（メールアドレスでログイン）
   - 「[Djangoでメールアドレスとパスワードでログインしてみる](https://qiita.com/cortyuming/items/2167a29a90c94bb4b1bb)」の記述に従って実装した
   - ローカル: 「エラーなし」を確認
