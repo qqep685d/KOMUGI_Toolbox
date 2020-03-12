@@ -21,3 +21,4 @@
     - `createsuperuser`でwarningありを確認。ただし、ユーザー作成は完了
       - `pip install psycopg2-binary`を実行
       - `pip uninstall psycopg2`を実行
+    - HerokuもOK
