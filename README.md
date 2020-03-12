@@ -25,6 +25,12 @@
   - 参考: 「[Django2 でユーザー認証（ログイン認証）を実装するチュートリアル -1- 環境構築とアプリ雛形の作成](https://wonderwall.hatenablog.com/entry/2018/03/22/001500)」
   - 最低限のログイン・ログアウトページ実装は、上のサイトでできた
   - Herokuにデプロイ
+    - `python manage.py collectstatic --noinput`のエラー
+    - ローカルで`python manage.py collectstatic`を実行
+    - Herokuの設定変更: `heroku config:set DISABLE_COLLECTSTATIC=1`を実行
+  - Herokuに再デプロイ: 成功しかしadminサイトにアクセスできない
+    - [これ](https://teratail.com/questions/218279)を参考に、`python manage.py collectstatic`で生じた「staticfiles」フォルダを削除
+  - Herokuに再デプロイ:
 
 
 - STATICFILES_DIRS、STATIC_ROOTについて
