@@ -15,16 +15,12 @@
     - `heroku config:set SECRET_KEY='....'`を忘れていた
   - Herokuにデプロイ: OK
     - `python manage.py collectstatic --noinput`も正常に実行されていた
-    - `heroku ps:scale web=1`実施
-    - `heroku run python manage.py migrate`実施
-
+    - `heroku ps:scale web=1` ...OK
 2. ユーザー機能（メールアドレスでログイン）
   - 参照: [Djangoでメールアドレスとパスワードでログインしてみる](https://qiita.com/cortyuming/items/2167a29a90c94bb4b1bb)
-  - ローカル: 「エラーなし」を確認
-  - Heroku:
-    - Herokuにて、`migrate`と`createsuperuser`を実行
-    - `migrate`はOK
-    - `createsuperuser`でwarningありを確認。ただし、ユーザー作成は完了
-      - `pip install psycopg2-binary`を実行
-      - `pip uninstall psycopg2`を実行
-    - HerokuもOK
+  - ローカル: OK
+  - Herokuにデプロイ: OK
+    - `heroku run python manage.py migrate` ...OK
+    - `heroku run python manage.py createsuperuser` ...OK
+3. ログイン、ログアウト機能
+  - 参照: 
