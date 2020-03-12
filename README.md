@@ -28,5 +28,6 @@
 
 
 - STATICFILES_DIRS、STATIC_ROOTについて
-  - [違い説明](https://ja.stackoverflow.com/questions/38052/django%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8Bstatic-root-staticfiles-dirs-static-url%E3%81%AE%E9%81%95%E3%81%84%E3%81%A8%E3%81%AF)
+  - [説明](https://qiita.com/saira/items/a1c565c4a2eace268a07)
+  - [簡易説明](https://ja.stackoverflow.com/questions/38052/django%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8Bstatic-root-staticfiles-dirs-static-url%E3%81%AE%E9%81%95%E3%81%84%E3%81%A8%E3%81%AF)
   - [書き方例](https://medium.com/@kjmczk/django-settings-c29eb629223)
