@@ -30,7 +30,11 @@
     - Herokuの設定変更: `heroku config:set DISABLE_COLLECTSTATIC=1`を実行
   - Herokuに再デプロイ: 成功しかしadminサイトにアクセスできない
     - [これ](https://teratail.com/questions/218279)を参考に、`python manage.py collectstatic`で生じた「staticfiles」フォルダを削除
-  - Herokuに再デプロイ:
+  - Herokuに再デプロイ:ダメ
+  - Herokuのアプリを削除して、再デプロイ
+    - `heroku config:set DISABLE_COLLECTSTATIC=1`
+    - `heroku config:set SECRET_KEY='.......'`
+
 
 
 - STATICFILES_DIRS、STATIC_ROOTについて
