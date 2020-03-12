@@ -1,0 +1,33 @@
+{% load i18n static %}
+<!DOCTYPE html>{% get_current_language as LANGUAGE_CODE %}
+<html lang="{{ LANGUAGE_CODE|default:"ja" }}">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+{% block extra_css %}{% endblock %}
+<title>{% block title %}KOMUGI Toolbox{% endblock %}</title>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <p class="site-name"><a href="">KOMUGI Toolbox</a>{% block subtitle %}{% endblock %}</p>
+      <nav>
+        <ul>
+          {% if user.is_authenticated %}
+          <li><a href="{% url 'logout' %}" class="logout">Logout</a></li>
+          {% else %}
+          <li><a href="{% url 'login' %}" class="login">Login</a></li>
+          {% endif %}
+        </ul>
+      </nav>
+    </header>
+
+    <div class="content">
+      {% block content %}{% endblock %}
+    </div>
+  </div>
+</body>
+
+{% block extra_js %}{% endblock %}
+</html>

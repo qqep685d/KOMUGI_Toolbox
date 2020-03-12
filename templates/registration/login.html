@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<div class="row my-3">
+    <div class="col col-md-12">
+        <a href="" class="btn btn-secondary">検索ページ</a>
+    </div>
+</div>
+
+<div class="row justify-content-center">
+  <div class="col-lg-4 col-md-6 col-sm-8">
+    <div class="card">
+      <div class="card-body">
+        <h2 class="text-center text-default mb-3">Login</h2>
+        <form method="post" action="{% url 'login' %}">{% csrf_token %}
+          <div class="form-block mt-3">
+            {{ form.as_p }}
+          </div>
+          <div class="">
+            <input type="submit" value="ログイン" class="btn btn-primary btn-block mt-3" />
+            <input type="hidden" name="next" value="{{ next }}" />
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

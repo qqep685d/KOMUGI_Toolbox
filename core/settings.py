@@ -37,6 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'bootstrap4',
     'widget_tweaks',
+<<<<<<< HEAD
+=======
+    'account.apps.AccountConfig',
+>>>>>>> 8b987794ffb9d01974c30380808dfe497d512889
 ]
 
 MIDDLEWARE = [
