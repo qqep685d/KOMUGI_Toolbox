@@ -6,5 +6,5 @@ myvenv
 db.sqlite3
 /static
 .DS_Store
-local.py
+local_settings.py
 .python-version
