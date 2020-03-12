@@ -129,6 +129,7 @@ AUTH_USER_MODEL = 'account.User'
 
 # ログイン、ログアウトページの実装に必要
 LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
 
 # local environments
 try:
