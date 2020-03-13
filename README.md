@@ -47,6 +47,14 @@
   - `{% loac i18n static %}` => `{% loac static %}`
   - Herokuにデプロイ: NG
   - psycopg2について、requrements.txt更新
-  - Herokuアプリの削除`heroku destroy`
-  - Herokuアプリ再作成
-    - heroku config:set SECRET_KEY=
+  - Herokuアプリの削除:
+    - `heroku destroy --app komugi-toolbox --confirm komugi-toolbox`
+  - Herokuアプリ再作成:
+    - `heroku create komugi-toolbox`
+    - `heroku config:set SECRET_KEY=`
+    - `heroku ps:scale web=1`
+    - `heroku run python manage.py migrate`
+    - `heroku run python manage.py createsuperuser`
+  - Herokuにデプロイ: NG
+  - 削除`STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'`
+  - Herokuにデプロイ: 
