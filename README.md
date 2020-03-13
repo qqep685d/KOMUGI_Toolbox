@@ -57,4 +57,10 @@
     - `heroku run python manage.py createsuperuser`
   - Herokuにデプロイ: NG
   - 削除`STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'`
-  - Herokuにデプロイ: 
+  - Herokuにデプロイ: NG
+  - wsgiを編集:
+    - `from dj_static import Cling`
+    - `application = Cling(get_wsgi_application())`
+  - Herokuにデプロイ: NG
+    - `from dj_static import Cling` in wsgi.py
+  - `pip install dj-static`
