@@ -37,3 +37,6 @@
     STATIC_URL = '/static/'
     ```
 4. FinDocsアプリの実装
+  - 事前作成アプリをコピー
+  - ローカル: OK
+  - Herokuにデプロイ: 

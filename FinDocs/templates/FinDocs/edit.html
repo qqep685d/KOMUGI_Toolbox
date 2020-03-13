@@ -1,0 +1,49 @@
+{% extends "FinDocs/base.html" %}
+
+{% block title %}FinDocs | Edit{% endblock title %}
+
+{% block content %}
+<div class="row border-bottom mt-2">
+  <div class="col-md-8 col-lg-8">
+    <h1 class="">FinDocs | 編集</h1>
+  </div>
+
+  <!-- admin menu -->
+  {% include "FinDocs/parts/admin_menu.html" %}
+</div>
+
+<div class="row my-3">
+    <div class="col col-md-6">
+        <a href="{% url 'findocs:index' %}" class="btn btn-secondary">検索ページ</a>
+    </div>
+    <div class="col col-md-6 text-right">
+        <a href="{% url 'findocs:detail' rec.pk %}" class="btn btn-secondary">詳細ページ</a>
+    </div>
+</div>
+
+<!-- form -->
+{% include "FinDocs/parts/doc_form.html" %}
+
+<div class="row my-3">
+  <div class="col col-md-6">
+    <!--- 保存ボタン　--->
+    <button type="button" class="btn btn-primary mr-2" data-toggle="modal" data-target="#save-modal" style="width:80px">保存</button>
+    {% include "FinDocs/parts/modal_save1.html" %}
+  </div>
+
+  <div class="col col-md-6 text-right">
+    <!--- 削除ボタン　--->
+    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#del-modal" style="width:80px">削除</button>
+    {% include "FinDocs/parts/modal_del.html" %}
+  </div>
+</div>
+
+{% endblock content %}
+
+{% block extra_js %}
+<script>
+JsBarcode("#barcode", "{{ rec.barcode }}", {
+  format: "CODE39", fontOptions: "bold", fontSize: 18,
+});
+</script>
+{% endblock extra_js %}

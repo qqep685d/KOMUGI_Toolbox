@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'bootstrap4',
     'widget_tweaks',
     'account.apps.AccountConfig',
+    'FinDocs.apps.FindocsConfig',
 ]
 
 MIDDLEWARE = [
@@ -128,8 +129,8 @@ STATIC_URL = '/static/'
 AUTH_USER_MODEL = 'account.User'
 
 # ログイン、ログアウトページの実装に必要
-LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/findocs/'
+LOGOUT_REDIRECT_URL = '/findocs/'
 
 # local environments
 try:
