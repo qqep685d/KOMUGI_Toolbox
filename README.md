@@ -2,6 +2,7 @@
 
 ## アプリケーション
 - FinDocs: ドキュメント管理データベースツール
+- account: アカウントログイン、ログアウト機能の実装（adminページも使用可能）
 
 
 ## 経過メモ
@@ -29,3 +30,10 @@
   - Djangoのログイン処理を実装する方法①の後半
   - ローカル: OK
   - Herokuにデプロイ: OK
+  - デプロイ時の`python manage.py collectstatic --noinput`は、以下の設定であれば問題なさそう。  
+    共通のCSSやJSは作らないようにする。  
+    ```
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+    STATIC_URL = '/static/'
+    ```
+4. FinDocsアプリの実装
