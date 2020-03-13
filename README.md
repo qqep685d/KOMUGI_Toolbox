@@ -45,3 +45,8 @@
   - `ALLOWED_HOSTS = ['*']`に変更
   - Herokuにデプロイ: NG
   - `{% loac i18n static %}` => `{% loac static %}`
+  - Herokuにデプロイ: NG
+  - psycopg2について、requrements.txt更新
+  - Herokuアプリの削除`heroku destroy`
+  - Herokuアプリ再作成
+    - heroku config:set SECRET_KEY=
