@@ -64,3 +64,8 @@
   - Herokuにデプロイ: NG
     - `from dj_static import Cling` in wsgi.py
   - `pip install dj-static`
+  - `pip freeze > requirements.txt`
+  - asgi.pyの全コードをコメントアウト
+  - Herokuにデプロイ: NG
+  - [この](https://getbootstrap.jp/docs/4.3/getting-started/introduction/)説明に従って、<script>の位置を変更
+  - Herokuにデプロイ: 
