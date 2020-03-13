@@ -1,10 +1,6 @@
 from django import forms
-from django.utils import timezone
-from django.contrib.auth.forms import AuthenticationForm
-from django.core.files.storage import default_storage
-from django.conf import settings
 
-import os, io, csv, re
+import re
 
 from .models import *
 

@@ -43,4 +43,5 @@
   - CSS,JSをファイル読み込みからCDNに変更
   - Herokuにデプロイ: NG
   - `ALLOWED_HOSTS = ['*']`に変更
-  
+  - Herokuにデプロイ: NG
+  - `{% loac i18n static %}` => `{% loac static %}`
