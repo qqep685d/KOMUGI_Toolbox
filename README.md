@@ -40,4 +40,7 @@
   - 事前作成アプリをコピー
   - ローカル: OK
   - Herokuにデプロイ: FinDocsページが`Server Error (500)`
-    - bootstrap cssをwebから引っ張ってくるようにする
+  - CSS,JSをファイル読み込みからCDNに変更
+  - Herokuにデプロイ: NG
+  - `ALLOWED_HOSTS = ['*']`に変更
+  
