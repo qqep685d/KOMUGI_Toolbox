@@ -39,4 +39,5 @@
 4. FinDocsアプリの実装
   - 事前作成アプリをコピー
   - ローカル: OK
-  - Herokuにデプロイ: 
+  - Herokuにデプロイ: FinDocsページが`Server Error (500)`
+    - bootstrap cssをwebから引っ張ってくるようにする
