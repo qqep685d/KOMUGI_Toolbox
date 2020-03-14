@@ -16,10 +16,10 @@
 {% if user.is_authenticated %}
 <div class="row my-3">
   <div class="col-md-6 col-lg-6">
-    <a href="{% url 'findocs:index' %}" class="btn btn-secondary">資料検索ページに戻る</a>
+    <a href="{% url 'FinDocs:index' %}" class="btn btn-secondary">資料検索ページに戻る</a>
   </div>
   <div class="col-md-6 col-lg-6 text-right">
-    <a href="{% url 'findocs:contact_add' %}" class="btn btn-primary" style="width:80px">追加</a>
+    <a href="{% url 'FinDocs:contact_add' %}" class="btn btn-primary" style="width:80px">追加</a>
   </div>
 </div>
 {% endif %}
@@ -36,7 +36,7 @@
   <tbody>
     {% for con in cons %}
     <tr>
-      <td scope="row"><a href="{% url 'findocs:contact_edit' con.pk %}">{{ con.contact_to }}</a></td>
+      <td scope="row"><a href="{% url 'FinDocs:contact_edit' con.pk %}">{{ con.contact_to }}</a></td>
       <td>{{ con.email }}</td>
       <td>{{ con.priority }}</td>
       <td>{{ con.remarks }}</td>

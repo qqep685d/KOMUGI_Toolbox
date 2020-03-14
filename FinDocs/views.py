@@ -19,7 +19,7 @@ from .forms import *
 class DocListView(ListView):
     """検索＆一覧"""
     model = Doc
-    template_name = 'findocs/index.html'
+    template_name = 'FinDocs/index.html'
     context_object_name = 'recs'
     strict = False
     paginate_by = 10
@@ -65,7 +65,7 @@ class DocListView(ListView):
 class DocDetailView(DetailView):
     """詳細"""
     model = Doc
-    template_name = 'findocs/detail.html'
+    template_name = 'FinDocs/detail.html'
     context_object_name = 'rec'
 
 
@@ -73,9 +73,9 @@ class DocEditView(UpdateView):
     """編集"""
     model = Doc
     form_class = DocForm
-    template_name = 'findocs/edit.html'
+    template_name = 'FinDocs/edit.html'
     context_object_name = 'rec'
-    success_url = reverse_lazy('findocs:index')
+    success_url = reverse_lazy('FinDocs:index')
 
     def form_valid(self, form):
         saved_rec = form.save()
@@ -87,12 +87,12 @@ class DocEditView(UpdateView):
 
         # 「保存して詳細ページへ」
         if 'save_and_detail' in self.request.POST:
-            return redirect('findocs:detail', pk=saved_rec.pk)
+            return redirect('FinDocs:detail', pk=saved_rec.pk)
         # 「保存して編集を続ける」
         elif 'save_and_edit' in self.request.POST:
-            return redirect('findocs:edit', pk=saved_rec.pk)
+            return redirect('FinDocs:edit', pk=saved_rec.pk)
         # 「保存」
-        return redirect('findocs:index')
+        return redirect('FinDocs:index')
 
     def form_isvalid(self, form):
         messages.error(self.request, '入力内容をご確認ください。')
@@ -103,9 +103,9 @@ class DocCreateView(CreateView):
     """追加"""
     model = Doc
     form_class = DocForm
-    template_name = 'findocs/add.html'
+    template_name = 'FinDocs/add.html'
     context_object_name = 'rec'
-    success_url = reverse_lazy('findocs:index')
+    success_url = reverse_lazy('FinDocs:index')
 
     def form_valid(self, form):
         saved_rec = form.save()
@@ -117,27 +117,27 @@ class DocCreateView(CreateView):
 
         # 「保存してもう一つ追加」
         if 'save_and_add' in self.request.POST:
-            return redirect('findocs:add')
+            return redirect('FinDocs:add')
         # 「保存して編集を続ける」
         elif 'save_and_edit' in self.request.POST:
-            return redirect('findocs:edit', pk=saved_rec.pk)
+            return redirect('FinDocs:edit', pk=saved_rec.pk)
         # 「保存」
-        return redirect('findocs:index')
+        return redirect('FinDocs:index')
 
 
 class DocDeleteView(DeleteView):
     """削除"""
     model = Doc
-    template_name = 'findocs/edit.html'
+    template_name = 'FinDocs/edit.html'
     context_object_name = 'rec'
-    success_url = reverse_lazy('findocs:index')
+    success_url = reverse_lazy('FinDocs:index')
 
 #==============================
 
 class DocTypeListView(ListView):
     """一覧"""
     model = DocType
-    template_name = 'findocs/category_index.html'
+    template_name = 'FinDocs/category_index.html'
     context_object_name = 'cats'
     strict = False
 
@@ -151,36 +151,36 @@ class DocTypeCreateView(CreateView):
     """追加"""
     model = DocType
     form_class = DocTypeForm
-    template_name = 'findocs/category_add.html'
+    template_name = 'FinDocs/category_add.html'
     context_object_name = 'cat'
-    success_url = reverse_lazy('findocs:category_index')
+    success_url = reverse_lazy('FinDocs:category_index')
 
     def form_valid(self, form):
         saved_cat = form.save()
         # 「保存」
-        return redirect('findocs:category_index')
+        return redirect('FinDocs:category_index')
 
 
 class DocTypeEditView(UpdateView):
     """編集"""
     model = DocType
     form_class = DocTypeForm
-    template_name = 'findocs/category_edit.html'
+    template_name = 'FinDocs/category_edit.html'
     context_object_name = 'cat'
-    success_url = reverse_lazy('findocs:category_index')
+    success_url = reverse_lazy('FinDocs:category_index')
 
     def form_valid(self, form):
         saved_cat = form.save()
         # 「保存」
-        return redirect('findocs:category_index')
+        return redirect('FinDocs:category_index')
 
 
 class DocTypeDeleteView(DeleteView):
     """削除"""
     model = DocType
-    template_name = 'findocs/category_del.html'
+    template_name = 'FinDocs/category_del.html'
     context_object_name = 'cat'
-    success_url = reverse_lazy('findocs:category_index')
+    success_url = reverse_lazy('FinDocs:category_index')
 
 
 #==============================
@@ -188,7 +188,7 @@ class DocTypeDeleteView(DeleteView):
 class ContactListView(ListView):
     """一覧"""
     model = Contact
-    template_name = 'findocs/contact_index.html'
+    template_name = 'FinDocs/contact_index.html'
     context_object_name = 'cons'
     strict = False
 
@@ -202,36 +202,36 @@ class ContactCreateView(CreateView):
     """追加"""
     model = Contact
     form_class = ContactForm
-    template_name = 'findocs/contact_add.html'
+    template_name = 'FinDocs/contact_add.html'
     context_object_name = 'con'
-    success_url = reverse_lazy('findocs:contact_index')
+    success_url = reverse_lazy('FinDocs:contact_index')
 
     def form_valid(self, form):
         saved_cat = form.save()
         # 「保存」
-        return redirect('findocs:contact_index')
+        return redirect('FinDocs:contact_index')
 
 
 class ContactEditView(UpdateView):
     """編集"""
     model = Contact
     form_class = ContactForm
-    template_name = 'findocs/contact_edit.html'
+    template_name = 'FinDocs/contact_edit.html'
     context_object_name = 'con'
-    success_url = reverse_lazy('findocs:contact_index')
+    success_url = reverse_lazy('FinDocs:contact_index')
 
     def form_valid(self, form):
         saved_cat = form.save()
         # 「保存」
-        return redirect('findocs:contact_index')
+        return redirect('FinDocs:contact_index')
 
 
 class ContactDeleteView(DeleteView):
     """削除"""
     model = Contact
-    template_name = 'findocs/contact_del.html'
+    template_name = 'FinDocs/contact_del.html'
     context_object_name = 'con'
-    success_url = reverse_lazy('findocs:contact_index')
+    success_url = reverse_lazy('FinDocs:contact_index')
 
 
 #==============================
@@ -239,7 +239,7 @@ class ContactDeleteView(DeleteView):
 class OriginalDocPlaceListView(ListView):
     """一覧"""
     model = OriginalDocPlace
-    template_name = 'findocs/docplace_index.html'
+    template_name = 'FinDocs/docplace_index.html'
     context_object_name = 'plcs'
     strict = False
 
@@ -253,36 +253,36 @@ class OriginalDocPlaceCreateView(CreateView):
     """追加"""
     model = OriginalDocPlace
     form_class = OriginalDocPlaceForm
-    template_name = 'findocs/docplace_add.html'
+    template_name = 'FinDocs/docplace_add.html'
     context_object_name = 'plc'
-    success_url = reverse_lazy('findocs:docplace_index')
+    success_url = reverse_lazy('FinDocs:docplace_index')
 
     def form_valid(self, form):
         saved_cat = form.save()
         # 「保存」
-        return redirect('findocs:docplace_index')
+        return redirect('FinDocs:docplace_index')
 
 
 class OriginalDocPlaceEditView(UpdateView):
     """編集"""
     model = OriginalDocPlace
     form_class = OriginalDocPlaceForm
-    template_name = 'findocs/docplace_edit.html'
+    template_name = 'FinDocs/docplace_edit.html'
     context_object_name = 'plc'
-    success_url = reverse_lazy('findocs:docplace_index')
+    success_url = reverse_lazy('FinDocs:docplace_index')
 
     def form_valid(self, form):
         saved_cat = form.save()
         # 「保存」
-        return redirect('findocs:docplace_index')
+        return redirect('FinDocs:docplace_index')
 
 
 class OriginalDocPlaceDeleteView(DeleteView):
     """削除"""
     model = OriginalDocPlace
-    template_name = 'findocs/docplace_del.html'
+    template_name = 'FinDocs/docplace_del.html'
     context_object_name = 'plc'
-    success_url = reverse_lazy('findocs:docplace_index')
+    success_url = reverse_lazy('FinDocs:docplace_index')
 
 #==============================
 
@@ -305,8 +305,8 @@ def check_created_at(now, query):
 
 class DataImport(FormView):
     """インポート"""
-    template_name = 'findocs/import.html'
-    success_url = reverse_lazy('findocs:index')
+    template_name = 'FinDocs/import.html'
+    success_url = reverse_lazy('FinDocs:index')
     form_class = DocUploadForm
 
     def form_valid(self, form):
@@ -382,10 +382,10 @@ class DataImport(FormView):
                                 doc.save()
                     return super().form_valid(form)
                 except:
-                    redirect('findocs:import')
+                    redirect('FinDocs:import')
             else:
-                redirect('findocs:import')
-        return redirect('findocs:import')
+                redirect('FinDocs:import')
+        return redirect('FinDocs:import')
 
 
 def DataExport(request):

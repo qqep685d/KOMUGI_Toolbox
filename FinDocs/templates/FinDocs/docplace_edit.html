@@ -15,7 +15,7 @@
 
 <div class="row my-3">
     <div class="col col-md-12">
-        <a href="{% url 'findocs:docplace_index' %}" class="btn btn-secondary" style="width:80px">戻る</a>
+        <a href="{% url 'FinDocs:docplace_index' %}" class="btn btn-secondary" style="width:80px">戻る</a>
     </div>
 </div>
 
@@ -70,7 +70,7 @@
                 本当にこのデータを削除しますか？
             </div>
             <div class="modal-footer">
-              <form action="{% url 'findocs:docplace_del' plc.pk %}" method="POST">
+              <form action="{% url 'FinDocs:docplace_del' plc.pk %}" method="POST">
                 {% csrf_token %}
                 <button type="submit" class="btn btn-danger">削除する</button>
               </form>

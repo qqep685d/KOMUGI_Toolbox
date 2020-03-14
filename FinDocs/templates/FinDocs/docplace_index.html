@@ -16,10 +16,10 @@
 {% if user.is_authenticated %}
 <div class="row my-3">
   <div class="col-md-6 col-lg-6">
-    <a href="{% url 'findocs:index' %}" class="btn btn-secondary">資料検索ページに戻る</a>
+    <a href="{% url 'FinDocs:index' %}" class="btn btn-secondary">資料検索ページに戻る</a>
   </div>
   <div class="col-md-6 col-lg-6 text-right">
-    <a href="{% url 'findocs:docplace_add' %}" class="btn btn-primary" style="width:80px">追加</a>
+    <a href="{% url 'FinDocs:docplace_add' %}" class="btn btn-primary" style="width:80px">追加</a>
   </div>
 </div>
 {% endif %}
@@ -35,7 +35,7 @@
   <tbody>
     {% for plc in plcs %}
     <tr>
-      <td scope="row"><a href="{% url 'findocs:docplace_edit' plc.pk %}">{{ plc.place }}</a></td>
+      <td scope="row"><a href="{% url 'FinDocs:docplace_edit' plc.pk %}">{{ plc.place }}</a></td>
       <td>{{ plc.priority }}</td>
       <td>{{ plc.remarks }}</td>
     </tr>

@@ -46,9 +46,9 @@
       <td>{{ rec.date }}</td>
       <td>
         <a href="{{ rec.url }}" target="_blank" class="btn btn-outline-success btn-sm">閲覧</a>
-        <a href="{% url 'findocs:detail' rec.pk %}" class="btn btn-outline-info btn-sm">詳細</a>
+        <a href="{% url 'FinDocs:detail' rec.pk %}" class="btn btn-outline-info btn-sm">詳細</a>
         {% if user.is_authenticated %}
-        <a href="{% url 'findocs:edit' rec.pk %}" class="btn btn-outline-secondary btn-sm">編集</a>
+        <a href="{% url 'FinDocs:edit' rec.pk %}" class="btn btn-outline-secondary btn-sm">編集</a>
         {% endif %}
       </td>
     </tr>

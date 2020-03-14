@@ -15,7 +15,7 @@
 
 <div class="row my-3">
     <div class="col col-md-12">
-        <a href="{% url 'findocs:contact_index' %}" class="btn btn-secondary" style="width:80px">戻る</a>
+        <a href="{% url 'FinDocs:contact_index' %}" class="btn btn-secondary" style="width:80px">戻る</a>
     </div>
 </div>
 
@@ -70,7 +70,7 @@
                 本当にこのデータを削除しますか？
             </div>
             <div class="modal-footer">
-              <form action="{% url 'findocs:contact_del' con.pk %}" method="POST">
+              <form action="{% url 'FinDocs:contact_del' con.pk %}" method="POST">
                 {% csrf_token %}
                 <button type="submit" class="btn btn-danger">削除する</button>
               </form>

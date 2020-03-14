@@ -16,10 +16,10 @@
 {% if user.is_authenticated %}
 <div class="row my-3">
   <div class="col-md-6 col-lg-6">
-    <a href="{% url 'findocs:index' %}" class="btn btn-secondary">資料検索ページに戻る</a>
+    <a href="{% url 'FinDocs:index' %}" class="btn btn-secondary">資料検索ページに戻る</a>
   </div>
   <div class="col-md-6 col-lg-6 text-right">
-    <a href="{% url 'findocs:category_add' %}" class="btn btn-primary" style="width:80px">追加</a>
+    <a href="{% url 'FinDocs:category_add' %}" class="btn btn-primary" style="width:80px">追加</a>
   </div>
 </div>
 {% endif %}
@@ -35,7 +35,7 @@
   <tbody>
     {% for cat in cats %}
     <tr>
-      <td scope="row"><a href="{% url 'findocs:category_edit' cat.pk %}">{{ cat.name }}</a></td>
+      <td scope="row"><a href="{% url 'FinDocs:category_edit' cat.pk %}">{{ cat.name }}</a></td>
       <td>{{ cat.priority }}</td>
       <td>{{ cat.remarks }}</td>
     </tr>
