@@ -75,3 +75,15 @@
   - Herokuにデプロイ: NG
   - ログイン画面に各種JSを入れてみてどうなるかみてみる
   - Herokuにデプロイ: NG
+  - DEBAG=TRUEで試す
+    - 詳細がはっきりわかるので、これでうまくいくように修正していく
+    - django/template/backends/django.py in reraise, line 84
+    - アプリ内のテンプレートの位置は階層的にすると、エラーが出るようだ
+  - アプリ再構築
+  - `heroku destroy --app komugi-toolbox --confirm komugi-toolbox`
+  - `heroku create komugi-toolbox`
+  - `heroku config:set SECRET_KEY=`
+  - `heroku ps:scale web=1`
+  - `heroku run python manage.py migrate`
+  - `heroku run python manage.py createsuperuser`
+  - Herokuにデプロイ: OK
