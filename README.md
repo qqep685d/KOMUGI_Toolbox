@@ -68,4 +68,10 @@
   - asgi.pyの全コードをコメントアウト
   - Herokuにデプロイ: NG
   - [この](https://getbootstrap.jp/docs/4.3/getting-started/introduction/)説明に従って、<script>の位置を変更
-  - Herokuにデプロイ: 
+  - Herokuにデプロイ: NG
+  - ログイン画面に各種bootstrap用のCDNを入れてみてどうなるかみてみる
+  - Herokuにデプロイ: NG
+  - runtime.txtを変更: python-3.7.3 => python-3.7.6
+  - Herokuにデプロイ: NG
+  - ログイン画面に各種JSを入れてみてどうなるかみてみる
+  - Herokuにデプロイ: NG
