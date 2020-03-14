@@ -4,8 +4,7 @@ import dj_database_url
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-DEBUG = True
-SECRET_KEY = '62ugg80svcj1^==-v4n@*ammg6)yx1&7*qo#c_q(e+x#a1#&3v'
+DEBUG = False
 
 ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com']
 
