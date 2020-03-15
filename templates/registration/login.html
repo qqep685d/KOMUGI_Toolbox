@@ -1,10 +1,25 @@
 {% extends 'base.html' %}
-{% block title %}Login{% endblock %}
+
 {% block content %}
-<h2>Login</h2>
-<form method="POST">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">Login</button>
-</form>
+
+<div class="my-5">
+  <form method="POST">{% csrf_token %}
+    <div class="col-md-6 offset-md-3">
+      <div class="card">
+        <div class="card-body">
+          {{ form.non_field_errors }}
+          {% for field in form %}
+            <div class="row my-3 mx-3">
+              <div style="width:150px;">{{ field.label }}</div>
+              <div style="width:200px;">{{ field }}</div>
+            </div>
+          {% endfor %}
+          <button type="submit" class="btn btn-primary btn-block my-3" >ログイン</button>
+          <input type="hidden" name="next" value="{{ next }}" />
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
 {% endblock %}
