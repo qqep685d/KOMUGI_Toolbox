@@ -87,3 +87,4 @@
   - `heroku run python manage.py migrate`
   - `heroku run python manage.py createsuperuser`
   - Herokuにデプロイ: OK
+  - レイアウト調整

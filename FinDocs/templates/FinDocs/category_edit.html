@@ -1,16 +1,14 @@
-{% extends "FinDocs/base.html" %}
+{% extends "base.html" %}
 
-{% block title %}FinDocs{% endblock title %}
+{% block app_navi_item %}
+{% include "FinDocs/admin_menu.html" %}
+{% endblock %}
 
 {% block content %}
-
 <div class="row border-bottom mt-2">
   <div class="col-md-8 col-lg-8">
-    <h1 class="">カテゴリー | 編集</h1>
+    <h1 class="">FinDocs | カテゴリー | 編集</h1>
   </div>
-
-  <!-- admin menu -->
-  {% include "FinDocs/admin_menu.html" %}
 </div>
 
 <div class="row my-3">

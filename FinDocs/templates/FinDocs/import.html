@@ -1,20 +1,19 @@
-{% extends "FinDocs/base.html" %}
+{% extends "base.html" %}
 
-{% block title %}FinDocs | Import{% endblock title %}
+{% block app_navi_item %}
+{% include "FinDocs/admin_menu.html" %}
+{% endblock %}
 
 {% block content %}
 <div class="row border-bottom mt-2">
-  <div class="col-md-8 col-lg-8">
+  <div class="col-md-12 col-lg-12">
     <h1 class="">FinDocs | インポート</h1>
   </div>
-
-  <!-- admin menu -->
-  {% include "FinDocs/admin_menu.html" %}
 </div>
 
 <div class="row my-3">
   <div class="col col-md-6">
-    <a href="{% url 'FinDocs:index' %}" class="btn btn-secondary">検索ページ</a>
+    <a href="{% url 'FinDocs:index' %}" class="btn btn-secondary">資料検索ページに戻る</a>
   </div>
 </div>
 
