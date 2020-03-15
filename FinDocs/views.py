@@ -26,21 +26,38 @@ class DocListView(ListView):
 
     # クエリセット
     def get_queryset(self):
-        if self.request.GET:
-            cond_k = Q()
-            cond_c = Q()
-            cond_y = Q()
-            if self.request.GET.get('k'):
-                words = self.request.GET.get('k').split()
-                cond_k = reduce(and_, [Q(title__icontains=w) | Q(content__icontains=w) | Q(barcode__icontains=w) | Q(keywords__icontains=w) for w in words])
-            if self.request.GET.get('c'):
-                cond_c = Q(type__id=self.request.GET.get('c'))
-            if self.request.GET.get('y'):
-                cond_y = Q(date__year=self.request.GET.get('y'))
-            context = Doc.objects.filter(cond_k & cond_c & cond_y).order_by('-date', 'title', 'id') # 一覧（検索結果）
+        if self.request.user.is_authenticated:
+            if self.request.GET:
+                cond_k = Q()
+                cond_c = Q()
+                cond_y = Q()
+                if self.request.GET.get('k'):
+                    words = self.request.GET.get('k').split()
+                    cond_k = reduce(and_, [Q(title__icontains=w) | Q(content__icontains=w) | Q(barcode__icontains=w) | Q(keywords__icontains=w) for w in words])
+                if self.request.GET.get('c'):
+                    cond_c = Q(type__id=self.request.GET.get('c'))
+                if self.request.GET.get('y'):
+                    cond_y = Q(date__year=self.request.GET.get('y'))
+                context = Doc.objects.filter(cond_k & cond_c & cond_y).order_by('-date', 'title', 'id') # 一覧（検索結果）
+            else:
+                context = Doc.objects.all().order_by('-date', 'title', 'id') # 一覧（全件）
+            return context
         else:
-            context = Doc.objects.all().order_by('-date', 'title', 'id') # 一覧（全件）
-        return context
+            if self.request.GET:
+                cond_k = Q()
+                cond_c = Q()
+                cond_y = Q()
+                if self.request.GET.get('k'):
+                    words = self.request.GET.get('k').split()
+                    cond_k = reduce(and_, [Q(title__icontains=w) | Q(content__icontains=w) | Q(barcode__icontains=w) | Q(keywords__icontains=w) for w in words])
+                if self.request.GET.get('c'):
+                    cond_c = Q(type__id=self.request.GET.get('c'))
+                if self.request.GET.get('y'):
+                    cond_y = Q(date__year=self.request.GET.get('y'))
+                context = Doc.objects.filter(is_public=1 & cond_k & cond_c & cond_y).order_by('-date', 'title', 'id') # 一覧（検索結果）
+            else:
+                context = Doc.objects.filter(is_public=1).order_by('-date', 'title', 'id') # 一覧（全件）
+            return context
 
     # その他のクエリセットなど
     def get_context_data(self, **kwargs):

@@ -23,6 +23,7 @@
     {% endif %}
 </div>
 
+{% if rec.is_public or user.is_authenticated %}
 <table class="table table-striped table-bordered">
     <tr><th scope="col">ID</th><td>{{ rec.id }}</td></tr>
     <tr><th scope="col">タイトル</th><td>{{ rec.title }}</td></tr>
@@ -35,4 +36,6 @@
     <tr><th scope="col">原本所在</th><td>{{ rec.original }}</td></tr>
     <tr><th scope="col">キーワード</th><td>{{ rec.keywords }}</td></tr>
 </table>
+{% endif %}
+
 {% endblock content %}
