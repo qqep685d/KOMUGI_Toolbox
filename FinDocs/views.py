@@ -76,7 +76,6 @@ class DocListView(ListView):
                 context["c"] = int(self.request.GET.get('c'))
             if self.request.GET.get('y'):
                 context["y"] = int(self.request.GET.get('y'))
-
         return context
 
 class DocDetailView(DetailView):
@@ -84,7 +83,6 @@ class DocDetailView(DetailView):
     model = Doc
     template_name = 'FinDocs/detail.html'
     context_object_name = 'rec'
-
 
 class DocEditView(UpdateView):
     """編集"""
