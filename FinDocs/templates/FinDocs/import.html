@@ -30,19 +30,19 @@
     <div class="form-group col-md-4 col-lg-4">
       <select class="form-control" id="exampleFormControlSelect1" name="selectedTable">
         <option value="doc" selected>資料テーブル</option>
-        <option value="cat" disabled>カテゴリーテーブル</option>
-        <option value="con" disabled>問合せテーブル</option>
-        <option value="pla" disabled>原本所在テーブル</option>
+        <option value="cat">カテゴリーテーブル</option>
+        <option value="con">問合せテーブル</option>
+        <option value="pla">原本所在テーブル</option>
       </select>
     </div>
     <div class="col-md-2 col-lg-2 text-right">
       <a href="" class="btn btn-primary import-modal" data-toggle="modal" data-target="#import-modal">インポート</a>
     </div>
   </div>
-  <!-- モーダル・ダイアログ -->
   {% include "FinDocs/modal_import.html" %}
 </form>
 
-
+<!-- モーダル・ダイアログ -->
+{% include "FinDocs/modal_export.html" %}
 
 {% endblock content %}

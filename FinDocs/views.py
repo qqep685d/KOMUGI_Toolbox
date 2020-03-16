@@ -326,58 +326,37 @@ class DataImport(FormView):
 
     def form_valid(self, form):
         if self.request.POST and self.request.FILES:
+            # フォームからの受け取り
+            import_file = self.request.FILES["importFile"]
+            csvfile = io.TextIOWrapper(import_file, encoding='utf-8')
+            reader = csv.reader(csvfile, delimiter="\t")
+
             if self.request.POST["selectedTable"] == "doc":
                 try:
-                    # フォームからの受け取り
-                    import_file = self.request.FILES["importFile"]
-                    csvfile = io.TextIOWrapper(import_file, encoding='utf-8')
-                    reader = csv.reader(csvfile, delimiter="\t")
                     # 現在の時刻
                     now   = timezone.datetime.now()
                     now_HR= now.strftime("%Y-%m-%d") # フォーマット変換
                     # 1行ずつ取り出し、更新or作成していく
                     for row in reader:
-                        if type(row[0])!='int':
+                        if row[0] and not row[0].isdecimal():
                             continue
-                        if row[0]:
-                            # インデックス（pk）がある場合
-                            if Doc.objects.filter(pk=row[0]).exists():
-                                # 一致するデータがある => 更新
-                                doc = Doc.objects.get(pk=row[0])
-                                doc.title      = row[1]
-                                doc.type       = DocType.objects.get(name=row[2])
-                                doc.content    = row[3]
-                                doc.date       = repair_date_format(row[4])
-                                doc.contact_to = Contact.objects.get(contact_to=row[5])
-                                doc.is_public  = 1 if row[6]=="公開" or row[6]=="1" else 0
-                                doc.url        = row[7]
-                                doc.image      = row[8]
-                                doc.original   = OriginalDocPlace.objects.get(place=row[10])
-                                doc.backup     = row[11]
-                                doc.keywords   = row[12]
-                                doc.save()
-
-                            else:
-                                # 一致するデータがない => 新規作成
-                                doc = Doc(
-                                    title      = row[1],
-                                    type       = DocType.objects.get(name=row[2]),
-                                    content    = row[3],
-                                    date       = repair_date_format(row[4]),
-                                    contact_to = Contact.objects.get(contact_to=row[5]),
-                                    is_public  = 1 if row[6]=="公開" or row[6]=="1" else 0,
-                                    url        = row[7],
-                                    image      = row[8],
-                                    original   = OriginalDocPlace.objects.get(place=row[10]),
-                                    backup     = row[11],
-                                    keywords   = row[12],
-                                )
-                                doc.save()
-                                if not doc.barcode:
-                                    doc.barcode = "%03d%05d" %  (doc.contact_to.pk, doc.pk)
-                                    doc.save()
+                        if row[0] and Doc.objects.filter(pk=row[0]).exists():
+                            # 一致するデータがある => 更新
+                            doc = Doc.objects.get(pk=row[0])
+                            doc.title      = row[1]
+                            doc.type       = DocType.objects.get(name=row[2])
+                            doc.content    = row[3]
+                            doc.date       = repair_date_format(row[4])
+                            doc.contact_to = Contact.objects.get(contact_to=row[5])
+                            doc.is_public  = 1 if row[6]=="公開" or row[6]=="1" else 0
+                            doc.url        = row[7]
+                            doc.image      = row[8]
+                            doc.original   = OriginalDocPlace.objects.get(place=row[10])
+                            doc.backup     = row[11]
+                            doc.keywords   = row[12]
+                            doc.save()
                         else:
-                            # pkがない => 新規作成
+                            # 一致するデータがない => 新規作成
                             doc = Doc(
                                 title      = row[1],
                                 type       = DocType.objects.get(name=row[2]),
@@ -398,6 +377,75 @@ class DataImport(FormView):
                     return super().form_valid(form)
                 except:
                     redirect('FinDocs:import')
+
+            elif self.request.POST["selectedTable"] == "cat":
+                try:
+                    for row in reader:
+                        if row[0] and not row[0].isdecimal():
+                            continue
+                        if row[0] and DocType.objects.filter(pk=row[0]).exists():
+                            cat = DocType.objects.get(pk=row[0])
+                            cat.name     = row[1]
+                            cat.priority = int(row[2])
+                            cat.remarks  = row[3]
+                            cat.save()
+                        else:
+                            cat = DocType(
+                                name     = row[1],
+                                priority = int(row[2]),
+                                remarks  = row[3],
+                            )
+                            cat.save()
+                    return super().form_valid(form)
+                except:
+                    redirect('FinDocs:import')
+
+            elif self.request.POST["selectedTable"] == "con":
+                try:
+                    for row in reader:
+                        if row[0] and not row[0].isdecimal():
+                            continue
+                        if row[0] and Contact.objects.filter(pk=row[0]).exists():
+                            con = Contact.objects.get(pk=row[0])
+                            con.contact_to = row[1]
+                            con.email      = row[2]
+                            con.priority   = int(row[3])
+                            con.remarks    = row[4]
+                            con.save()
+                        else:
+                            con = Contact(
+                                contact_to = row[1],
+                                email      = row[2],
+                                priority   = int(row[3]),
+                                remarks    = row[4],
+                            )
+                            con.save()
+                    return super().form_valid(form)
+                except:
+                    redirect('FinDocs:import')
+
+            elif self.request.POST["selectedTable"] == "pla":
+                try:
+                    for row in reader:
+                        if row[0] and not row[0].isdecimal():
+                            continue
+                        if row[0] and OriginalDocPlace.objects.filter(pk=row[0]).exists():
+                            pla = OriginalDocPlace.objects.get(pk=row[0])
+                            pla.place    = row[1]
+                            pla.priority = int(row[2])
+                            pla.remarks  = row[3]
+                            pla.save()
+                        else:
+                            pla = OriginalDocPlace(
+                                place    = row[1],
+                                priority = int(row[2]),
+                                remarks  = row[3],
+                            )
+                            pla.save()
+                    return super().form_valid(form)
+                except:
+                    redirect('FinDocs:import')
+
             else:
                 redirect('FinDocs:import')
         return redirect('FinDocs:import')
