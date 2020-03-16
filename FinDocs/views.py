@@ -41,7 +41,7 @@ class DocListView(ListView):
                 context = Doc.objects.filter(cond_k & cond_c & cond_y).order_by('-date', 'title', 'id') # 一覧（検索結果）
             else:
                 context = Doc.objects.all().order_by('-date', 'title', 'id') # 一覧（全件）
-            return context
+
         else:
             if self.request.GET:
                 cond_k = Q()
@@ -54,10 +54,10 @@ class DocListView(ListView):
                     cond_c = Q(type__id=self.request.GET.get('c'))
                 if self.request.GET.get('y'):
                     cond_y = Q(date__year=self.request.GET.get('y'))
-                context = Doc.objects.filter(is_public=1 & cond_k & cond_c & cond_y).order_by('-date', 'title', 'id') # 一覧（検索結果）
+                context = Doc.objects.filter(Q(is_public=1) & cond_k & cond_c & cond_y).order_by('-date', 'title', 'id') # 一覧（検索結果）
             else:
-                context = Doc.objects.filter(is_public=1).order_by('-date', 'title', 'id') # 一覧（全件）
-            return context
+                context = Doc.objects.filter(Q(is_public=1)).order_by('-date', 'title', 'id') # 一覧（全件）
+        return context
 
     # その他のクエリセットなど
     def get_context_data(self, **kwargs):
